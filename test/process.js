@@ -14,7 +14,7 @@ test('processor', function (t) {
 })
 
 test('process (cb)', function (t) {
-    t.plan(4)
+    t.plan(3)
     var q = cq()
     function processor (task, cb) {
         cb()
@@ -22,9 +22,6 @@ test('process (cb)', function (t) {
 
     t.throws(q.process, 'process requires a processor function')
     t.equal(q.process(processor), q, 'process returns reference to queue')
-    t.throws(function () {
-        q.process(processor)
-    }, 'only one processor function may be defined')
 
     q('task 1')
     q('task 2')

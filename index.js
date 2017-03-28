@@ -1,5 +1,4 @@
-var assert               = require('assert'),
-    assign               = require('object-assign'),
+var assign               = require('object-assign'),
     onerr                = require('on-error'),
     eventuate            = require('eventuate'),
     once                 = require('once'),
@@ -104,7 +103,6 @@ module.exports = function () {
 
     function process (func) {
         if (typeof func !== 'function') throw new TypeError('process requires a processor function')
-        assert(!processor, 'queue processor already defined')
         processor = func
         setImmediate(drain)
         return cq
